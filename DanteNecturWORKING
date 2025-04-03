@@ -1,0 +1,51 @@
+Dim objShell
+Set objShell = CreateObject("WScript.Shell")
+
+' Display message box
+MsgBox "Dante boutta take a poop in the toilet", vbExclamation, "Warning"
+
+' Spam errors
+For i = 1 To 10
+    MsgBox "Error: Something went wrong!", vbCritical, "Error"
+Next
+
+' Open annoying sites (with delay to avoid system freeze)
+For i = 1 To 30
+    objShell.Run "https://theannoyingsite.com/"
+    WScript.Sleep 500
+Next
+
+For i = 1 To 20
+    objShell.Run "https://www.youtube.com/watch?v=QF0ACRyNDbM"
+    WScript.Sleep 500
+Next
+
+' Ensure "C:\temp\" exists before creating file
+Dim fso, htmlFile
+Set fso = CreateObject("Scripting.FileSystemObject")
+If Not fso.FolderExists("C:\temp") Then fso.CreateFolder("C:\temp")
+
+' Create HTML file with spam message
+Set htmlFile = fso.CreateTextFile("C:\temp\rainbow.html", True)
+htmlFile.WriteLine "<html><body style='background-color: green; color: white; font-size: 50px;'>"
+For i = 1 To 100
+    htmlFile.WriteLine "DANTE LOVES POOPING<br>"
+Next
+htmlFile.WriteLine "</body></html>"
+htmlFile.Close
+
+objShell.Run "C:\temp\rainbow.html"
+
+' Open Notepad with spam message
+For i = 1 To 23
+    Dim notepad
+    Set notepad = CreateObject("WScript.Shell")
+    notepad.Run "notepad.exe"
+    WScript.Sleep 500
+    notepad.AppActivate "Notepad"
+    WScript.Sleep 500
+    notepad.SendKeys "Dante loves to poop in ur face"
+Next
+
+' Simulate fake BSOD (just a message box)
+MsgBox "Blue Screen of Death", vbCritical, "System Error"
